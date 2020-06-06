@@ -1,17 +1,22 @@
+import os
+
+DATABASE_DEFAULT = "postgresql://localhost/joke_api"
+
+
 class Config:
-    pass
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://localhost/joke_api"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    DEVELOPMENT = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", DATABASE_DEFAULT)
 
 
-class TestConfig(Config):
+class TestingConfig(Config):
     DEBUG = False
+    TESTING = True
     SQLALCHEMY_DATABASE_URI = "postgresql://localhost/joke_api_test"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-config = {"development": DevelopmentConfig, "test": TestConfig}
+config = {"development": DevelopmentConfig, "test": TestingConfig}
