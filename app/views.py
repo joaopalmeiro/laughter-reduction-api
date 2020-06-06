@@ -5,7 +5,7 @@ from .schemas import joke_schema, jokes_schema, params_joke_schema
 
 api_v1 = Blueprint("api", __name__, url_prefix="/api/v1")
 
-
+# Aux decorator
 def set_joke(function):
     def wrapper(*args, **kwargs):
         id = kwargs.get("id", 0)
@@ -22,7 +22,7 @@ def set_joke(function):
 
 @api_v1.route("/jokes", methods=["GET"])
 def get_jokes():
-    page = int(request.args.get("page", 1))  # Dict
+    page = int(request.args.get("page", 1))
     order = request.args.get("order", "desc")
 
     jokes = Joke.get_by_page(order, page)

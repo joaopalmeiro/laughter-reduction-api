@@ -2,14 +2,13 @@
 
 ## Quickstart
 
-- `source env/bin/activate`
+- `pipenv install`
+- `pipenv shell`
 - `python main.py`
 
 ## Commands
 
-- `python3 -m venv env`
-- `pip install Flask Flask-SQLAlchemy psycopg2-binary`
-- `pip install -U marshmallow`
+- `pipenv install Flask Flask-SQLAlchemy psycopg2-binary marshmallow`
 - `psql postgres`
   - `CREATE DATABASE joke_api;`
   - `CREATE DATABASE joke_api_test;`
